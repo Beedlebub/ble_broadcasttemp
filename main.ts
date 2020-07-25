@@ -1,10 +1,13 @@
+bluetooth.onBluetoothConnected(function () {
+    basic.showIcon(IconNames.Yes)
+})
+bluetooth.onBluetoothDisconnected(function () {
+    basic.showIcon(IconNames.No)
+})
 bluetooth.startTemperatureService()
-bluetooth.startUartService()
 basic.forever(function () {
     serial.writeNumber(input.temperature())
     serial.writeLine("")
-    bluetooth.uartWriteNumber(input.temperature())
-    bluetooth.uartWriteLine("")
     basic.showNumber(input.temperature())
     basic.pause(2000)
 })
